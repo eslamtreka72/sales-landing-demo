@@ -1,6 +1,6 @@
 <!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>لوحة مبيعات المندوبين - نسخة تجريبية</title>
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet"><style>body.d{font-family:Cairo,"Segoe UI",Tahoma,sans-serif}body.d .w{position:relative;z-index:1}body.d .hero h1{transition:transform .15s}
 :root{--bg:#0b0a0d;--bg2:#1a1510;--ac:#e3c58d;--ac2:#b98a4a;--tx:#f5efe4;--mu:#a99f8d}
 *{box-sizing:border-box;margin:0}
 body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;color:var(--tx);background:radial-gradient(900px 500px at 80% -10%,var(--bg2),transparent),var(--bg);line-height:1.7}
@@ -42,9 +42,29 @@ footer{text-align:center;color:var(--mu);padding:24px;font-size:13px}
 <footer>صفحة تجريبية ببيانات وهمية</footer></div><div style="position:fixed;bottom:14px;left:14px;display:flex;gap:8px;z-index:9;direction:ltr">
 <button onclick="T('A')" style="background:#e3c58d;border:0;border-radius:10px;padding:8px 12px;font-weight:700">A</button>
 <button onclick="T('B')" style="background:#5ec8ff;border:0;border-radius:10px;padding:8px 12px;font-weight:700">B</button>
-<button onclick="T('C')" style="background:#59e0a8;border:0;border-radius:10px;padding:8px 12px;font-weight:700">C</button></div>
+<button onclick="T('C')" style="background:#59e0a8;border:0;border-radius:10px;padding:8px 12px;font-weight:700">C</button><button onclick="T('D')" style="background:#c18bff;border:0;border-radius:10px;padding:8px 12px;font-weight:700">D</button></div>
+<canvas id="fx" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;display:none"></canvas>
+<div id="glow" style="position:fixed;left:0;top:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:0;display:none;background:radial-gradient(circle,rgba(193,139,255,.35),rgba(255,95,162,.12) 45%,transparent 70%)"></div>
 <script>
-var TH={A:['#0b0a0d','#1a1510','#e3c58d','#b98a4a','#f5efe4','#a99f8d'],B:['#050b1a','#0d2247','#5ec8ff','#3b7bff','#eaf3ff','#8ea6c9'],C:['#04110d','#0b3326','#59e0a8','#1fa97a','#e8fff6','#8fb8a8']};
-function T(k){var v=TH[k],n=['--bg','--bg2','--ac','--ac2','--tx','--mu'],r=document.documentElement.style;for(var i=0;i<6;i++)r.setProperty(n[i],v[i]);history.replaceState(0,'','?t='+k)}
-T((location.search.match(/t=([ABC])/)||[0,'A'])[1]);
+var TH={A:['#0b0a0d','#1a1510','#e3c58d','#b98a4a','#f5efe4','#a99f8d'],B:['#050b1a','#0d2247','#5ec8ff','#3b7bff','#eaf3ff','#8ea6c9'],C:['#04110d','#0b3326','#59e0a8','#1fa97a','#e8fff6','#8fb8a8'],D:['#07040f','#1d0b3a','#c18bff','#ff5fa2','#f6eeff','#a698c4']};
+function T(k){window.TK=k;document.body.classList.toggle('d',k=='D');var v=TH[k],n=['--bg','--bg2','--ac','--ac2','--tx','--mu'],r=document.documentElement.style;for(var i=0;i<6;i++)r.setProperty(n[i],v[i]);history.replaceState(0,'','?t='+k);if(window.FX)FX(k)}
+
+(function(){
+var c=document.getElementById('fx'),g=document.getElementById('glow'),x=c.getContext('2d'),P=[],W,H,mx=-999,my=-999,on=false,dpr=Math.min(devicePixelRatio||1,2),raf;
+function size(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);var n=Math.round(Math.min(90,W*H/14000));P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.6+.6})}
+function mv(e){var t=e.touches?e.touches[0]:e;mx=t.clientX;my=t.clientY;g.style.transform='translate('+mx+'px,'+my+'px)';var h=document.querySelector('.hero h1');if(h&&on){h.style.transform='translate('+((mx/W-.5)*-14)+'px,'+((my/H-.5)*-10)+'px)'}}
+addEventListener('pointermove',mv,{passive:true});addEventListener('touchmove',mv,{passive:true});addEventListener('touchstart',mv,{passive:true});
+function loop(){if(!on)return;x.clearRect(0,0,W,H);x.fillStyle='rgba(235,200,255,.8)';
+for(var i=0;i<P.length;i++){var p=P[i],dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<140){var f=(140-d)/140*1.4;p.vx+=dx/d*f*.08;p.vy+=dy/d*f*.08}
+p.vx*=.985;p.vy*=.985;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+x.beginPath();x.arc(p.x,p.y,p.r,0,6.283);x.fill();
+for(var j=i+1;j<P.length;j++){var q=P[j],a=p.x-q.x,b=p.y-q.y,e=a*a+b*b;if(e<9000){x.strokeStyle='rgba(193,139,255,'+(.25*(1-e/9000))+')';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}}
+raf=requestAnimationFrame(loop)}
+window.FX=function(k){var s=k=='D';if(s&&!on){on=true;c.style.display=g.style.display='block';size();loop()}else if(!s&&on){on=false;cancelAnimationFrame(raf);c.style.display=g.style.display='none';var h=document.querySelector('.hero h1');if(h)h.style.transform=''}};
+addEventListener('resize',function(){if(on)size()});
+document.addEventListener('visibilitychange',function(){if(document.hidden){cancelAnimationFrame(raf)}else if(on){loop()}});
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){window.FX=function(){}}
+})();
+
+T((location.search.match(/t=([ABCD])/)||[0,'A'])[1]);
 </script></body></html>
