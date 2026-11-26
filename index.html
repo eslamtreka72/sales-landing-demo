@@ -1,0 +1,50 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة مبيعات المندوبين - نسخة تجريبية</title>
+<style>
+:root{--bg:#0b0a0d;--bg2:#1a1510;--ac:#e3c58d;--ac2:#b98a4a;--tx:#f5efe4;--mu:#a99f8d}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",Tahoma,Arial,sans-serif;color:var(--tx);background:radial-gradient(900px 500px at 80% -10%,var(--bg2),transparent),var(--bg);line-height:1.7}
+.w{max-width:1000px;margin:auto;padding:0 20px}
+.g{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);border-radius:20px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;color:var(--ac);font-size:20px}
+.btn{display:inline-block;padding:13px 26px;border-radius:14px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#111;font-weight:800;text-decoration:none}
+.hero{text-align:center;padding:60px 0 40px}
+h1{font-size:clamp(30px,6vw,52px);line-height:1.3;margin-bottom:16px}
+h1 span{color:var(--ac)}
+.hero p{color:var(--mu);font-size:18px;max-width:600px;margin:0 auto 28px}
+.mock{margin:30px auto;padding:20px;max-width:760px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.k{padding:16px;text-align:center}.k b{display:block;font-size:26px;color:var(--ac)}.k small{color:var(--mu)}
+.bars{display:flex;align-items:flex-end;gap:10px;height:110px;margin-top:16px}
+.bars i{flex:1;border-radius:8px 8px 0 0;background:linear-gradient(var(--ac),var(--ac2));opacity:.9}
+.sec{padding:40px 0}.sec h2{text-align:center;font-size:30px;margin-bottom:24px}
+.f{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.f div{padding:22px}.f h3{color:var(--ac);margin-bottom:6px}.f p{color:var(--mu);font-size:15px}
+.cta{text-align:center;padding:36px;margin:30px 0}
+footer{text-align:center;color:var(--mu);padding:24px;font-size:13px}
+</style></head><body><div class="w">
+<nav><div class="logo">▣ سيلز بورد</div><a class="btn" href="#c">جرّب نسخة تجريبية</a></nav>
+<section class="hero"><h1>كل مبيعات مندوبينك في <span>شاشة واحدة</span></h1>
+<p>فواتير، مرتجعات، خطوط سير، تارجت وعمولة لكل مندوب، وتتفتح من الموبايل. من غير إكسيل ومن غير لف.</p>
+<a class="btn" href="#c">اطلب عرض تجريبي</a>
+<div class="g mock"><div class="row"><div class="g k"><b>84,500</b><small>مبيعات اليوم (جنيه)</small></div><div class="g k"><b>92%</b><small>تحقيق التارجت</small></div><div class="g k"><b>37</b><small>عميل زاره المندوب</small></div></div>
+<div class="bars"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:85%"></i><i style="height:70%"></i><i style="height:95%"></i><i style="height:60%"></i></div>
+<small style="color:var(--mu)">بيانات تجريبية</small></div></section>
+<section class="sec"><h2>إيه اللي هتاخده</h2><div class="f">
+<div class="g"><h3>فواتير ومرتجعات</h3><p>كل فاتورة وكل مرتجع للمندوب في مكان واحد وبحث سريع.</p></div>
+<div class="g"><h3>تارجت وعمولة</h3><p>المندوب يشوف وصل لفين في تارجت كل براند.</p></div>
+<div class="g"><h3>خطوط السير</h3><p>متابعة التوزيع والزيارات يوم بيوم.</p></div>
+<div class="g"><h3>مساعد ذكي</h3><p>اسأل عن عميل أو صنف واحصل على الرد في ثواني.</p></div>
+<div class="g"><h3>صلاحيات</h3><p>كل مندوب يشوف بياناته بس، والمدير يشوف الكل.</p></div>
+<div class="g"><h3>بيشتغل أوفلاين</h3><p>تطبيق على الموبايل من غير تحميل من المتجر.</p></div></div></section>
+<section class="g cta" id="c"><h2 style="margin-bottom:10px">جاهز تجرب على فريقك؟</h2><p style="color:var(--mu);margin-bottom:18px">ابعت اسم شركتك وعدد المندوبين ونجهزلك نسخة.</p><a class="btn" href="https://wa.me/201024250102">كلمنا على واتساب</a></section>
+<footer>صفحة تجريبية ببيانات وهمية</footer></div><div style="position:fixed;bottom:14px;left:14px;display:flex;gap:8px;z-index:9;direction:ltr">
+<button onclick="T('A')" style="background:#e3c58d;border:0;border-radius:10px;padding:8px 12px;font-weight:700">A</button>
+<button onclick="T('B')" style="background:#5ec8ff;border:0;border-radius:10px;padding:8px 12px;font-weight:700">B</button>
+<button onclick="T('C')" style="background:#59e0a8;border:0;border-radius:10px;padding:8px 12px;font-weight:700">C</button></div>
+<script>
+var TH={A:['#0b0a0d','#1a1510','#e3c58d','#b98a4a','#f5efe4','#a99f8d'],B:['#050b1a','#0d2247','#5ec8ff','#3b7bff','#eaf3ff','#8ea6c9'],C:['#04110d','#0b3326','#59e0a8','#1fa97a','#e8fff6','#8fb8a8']};
+function T(k){var v=TH[k],n=['--bg','--bg2','--ac','--ac2','--tx','--mu'],r=document.documentElement.style;for(var i=0;i<6;i++)r.setProperty(n[i],v[i]);history.replaceState(0,'','?t='+k)}
+T((location.search.match(/t=([ABC])/)||[0,'A'])[1]);
+</script></body></html>
